@@ -1,0 +1,44 @@
+/* PRESENTACION GENERAL */
+.pdf-general {
+    display: flex;
+    flex-direction: column;
+}
+
+.div-pdf {
+    margin: 20px auto 0;
+    z-index: -100;
+}
+
+.pdf-cuerpo-general {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    box-shadow: -10px 10px 5px #000;
+    width: 594px;
+    height: 420px;
+}
+
+.btn-pdf {
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+    margin: 30px auto 0;
+}
+
+@media (max-width: 920px) {
+
+    .div-forms {
+        width: 100%;
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 734px) {
+    .div-pdf {
+        transform: scale(0.6);
+        margin: -90px;
+        z-index: -100;
+    }
+
+    .btn-pdf {
+        margin: 20px auto 0;
+    }
+}

@@ -1,0 +1,222 @@
+.rutina-general {
+    background-color: rgb(79, 99, 116);
+    padding: 2px 6px;
+    height: 420px;
+}
+
+/* ESPACIO DE INFORMACION */
+.logo {
+    width: 60px;
+    border-radius: 5px;
+}
+
+/* CUADRADITO CON LOGO Y HOJA DE RUTINA */
+.logo2 {
+    width: 40px;
+    border-radius: 8px;
+    background-color: #000;
+}
+.hoja-de-rutina {
+    font-size: 10px;
+    text-align: center;
+}
+.imagen-hoja { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #cc4e4f;
+    width: 180px;
+    height: 60px;
+    border-radius: 6px;
+    border: 2px solid #433;
+}
+.columna-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 50%;
+}
+
+/* CAMPOS DE NOMBRE Y FECHA */
+.nombre-fecha {
+    font-size: 8px;
+    padding: 6px;
+    font-weight: bold;
+    height: 25px;
+}
+
+
+/* DISEÑO DE COLUMNAS */
+.columna-titulo {
+    background-color: #ce6060;
+    text-align: center;
+    align-items: center;
+    font-size: 9px;
+    font-weight: bold;
+    height: 18px;
+}
+.columna-subtitulo {
+    display: flex;
+    text-align: center;
+    gap: 2px;
+    color: #ffffff;
+    font-size: 7px;
+    font-weight: bold;
+    height: 17px;
+}
+.columnas {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.columna1 {
+    width: 88%;
+    background-color: #433;
+}
+.columna2 {
+    width: 12%;
+    background-color: #433;
+}
+.texto-tablas {
+    font-size: 7px;
+    font-weight: bold;
+    color: #000;
+}
+.columna-vacia-1 {
+    width: 88%;
+    background-color: #f5dcaf;
+    height: 17px;
+}
+.columna-vacia-2 {
+    width: 12%;
+    background-color: rgb(197, 195, 195);
+    height: 17px;
+}
+
+
+.filas {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 5px;
+}
+
+.espacio-eliminar {
+    margin: 1px;
+}
+
+
+/*  FORMULARIO INFORMACION */
+.form-info {
+    background-color: #79acaa;
+    display: flex;
+    width: 40%;
+    margin: 10px auto;
+    align-items: center;
+}
+
+/*  FORMULARIO  */
+.container-form {
+    background-color: #ddb373;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+}
+
+.caja-formularios {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px auto;
+}
+
+.form {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.titulo-ejercicio {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.form-ejercicios {
+    width: 33%;
+}
+
+.form-cantidad {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.filas-form {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+}
+
+.form-repeticiones {
+    min-width: 145px;
+}
+
+/* BOTON ELIMINAR */
+.btn-eliminar {
+    margin-top: 7px;
+    display: flex;
+    justify-content: center;
+    width: 25px;
+}
+
+.btn-eliminar:hover {
+    transform: scale(1.4);
+}
+.btn-eliminar:active {
+    filter: invert(1);
+}
+.width-select {
+    min-width: 70px;
+}
+
+@media (max-width: 920px) {
+    .form-info {
+        width: 90%;
+    }
+    .form {
+        width: 100%;
+    }
+    .caja-formularios {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px auto;
+        padding: 10px;
+    }
+    .text-serie {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .form-info {
+            width: 95%;
+        }
+    .form {
+        width: 100%;
+    }
+    .form-repeticiones {
+        min-width: 92px;
+    }
+}
