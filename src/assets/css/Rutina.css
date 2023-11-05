@@ -186,7 +186,7 @@
     filter: invert(1);
 }
 .width-select {
-    min-width: 70px;
+    min-width: 80px;
 }
 
 @media (max-width: 920px) {

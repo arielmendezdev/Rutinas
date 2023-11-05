@@ -14,11 +14,13 @@ import { contextoRutina } from "../../context/contextoRutina";
 import eliminar from "../../assets/img/eliminar.png";
 
 export default function Form() {
-  const { agregarBrazos } = useContext(contextoRutina);
-  const { agregarPecho } = useContext(contextoRutina);
-  const { agregarEspalda } = useContext(contextoRutina);
-  const { agregarHombros } = useContext(contextoRutina);
-  const { agregarPiernas } = useContext(contextoRutina);
+  const {
+    agregarBrazos,
+    agregarPecho,
+    agregarEspalda,
+    agregarHombros,
+    agregarPiernas,
+  } = useContext(contextoRutina);
 
   const [eje0, setEje0] = useState();
   const [eje1, setEje1] = useState();
@@ -66,8 +68,15 @@ export default function Form() {
     repe4,
   };
 
+  const [valorSelect, setValorSelect] = useState(null)
+
   const hundleSubmit = (e) => {
     e.preventDefault();
+    setValorSelect(null)
+    setCant0();
+    setRepe0();
+    setEje0();
+    setEje1();
     if (seleccion == "Brazos") {
       agregarBrazos(info);
     }
@@ -116,13 +125,19 @@ export default function Form() {
     setEje9();
   };
 
+
   const [select, setSelect] = useState([]);
 
+  const [ejercicioEnPantalla, setEjercicioEnPantalla] = useState('')
+
   const hundleChange = () => {
+    setEjercicioEnPantalla(seleccion)
+    
     if (seleccion === "Espalda") {
       setSelect(Espalda);
     }
     if (seleccion == "Pecho") {
+
       setSelect(Pecho);
     }
     if (seleccion == "Hombros") {
@@ -145,7 +160,8 @@ export default function Form() {
         className="form-control container-form"
         onSubmit={hundleSubmit}
       >
-        <div className="flex gap-4 p-2">
+        <h1 className="flex p-2 h-10 text-2xl text-red-600 font-bold w-100">{ejercicioEnPantalla}</h1>
+        <div className="flex gap-4 p-2 align-items-md-center">
           <Select
             options={ejercicios}
             onChange={(e) => setSeleccion(e.value)}
@@ -159,27 +175,32 @@ export default function Form() {
             <h1 className="text-serie">Series</h1>
             <div className="width-select">
               <Select
+                value={valorSelect}
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
-                onChange={(e) => setCant0(e.value)}
+                onChange={(e) => {setCant0(e.value), setValorSelect()}}
               />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select value={eje0} options={select} onChange={(e) => setEje0(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {setEje0(e.value), setValorSelect()}} />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select options={select} onChange={(e) => setEje1(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {
+              setEje1(e.value), setValorSelect();
+            }} />
           </div>
           <div className="form-repeticiones">
-            <Select
+            <Select value={valorSelect}
               className="form-repeticiones"
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
-              onChange={(e) => setRepe0(e.value)}
+              onChange={(e) => {
+                setRepe0(e.value), setValorSelect();
+              }}
             />
           </div>
           <button onClick={() => eliminarFila1()} className="btn-eliminar">
@@ -190,27 +211,33 @@ export default function Form() {
           <div className="form-cantidad">
             <h1 className="text-serie">Series</h1>
             <div className="width-select">
-              <Select
+              <Select value={valorSelect}
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
-                onChange={(e) => setCant1(e.value)}
+                onChange={(e) => {setCant1(e.value), setValorSelect()}}
               />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select options={select} onChange={(e) => setEje2(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {
+              setEje2(e.value), setValorSelect();
+            }} />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select options={select} onChange={(e) => setEje3(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {
+              setEje3(e.value), setValorSelect();
+            }} />
           </div>
           <div className="form-repeticiones">
-            <Select
+            <Select value={valorSelect}
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
-              onChange={(e) => setRepe1(e.value)}
+              onChange={(e) => {
+                setRepe1(e.value), setValorSelect();
+              }}
             />
           </div>
           <button onClick={() => eliminarFila2()} className="btn-eliminar">
@@ -221,27 +248,35 @@ export default function Form() {
           <div className="form-cantidad">
             <h1 className="text-serie">Series</h1>
             <div className="width-select">
-              <Select
+              <Select value={valorSelect}
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
-                onChange={(e) => setCant2(e.value)}
+                onChange={(e) => {
+                  setCant2(e.value), setValorSelect();
+                }}
               />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select options={select} onChange={(e) => setEje4(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {
+              setEje4(e.value), setValorSelect();
+            }} />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select options={select} onChange={(e) => setEje5(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {
+              setEje5(e.value), setValorSelect();
+            }} />
           </div>
           <div className="form-repeticiones">
-            <Select
+            <Select value={valorSelect}
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
-              onChange={(e) => setRepe2(e.value)}
+              onChange={(e) => {
+                setRepe2(e.value), setValorSelect();
+              }}
             />
           </div>
           <button onClick={() => eliminarFila3()} className="btn-eliminar">
@@ -252,27 +287,35 @@ export default function Form() {
           <div className="form-cantidad">
             <h1 className="text-serie">Series</h1>
             <div className="width-select">
-              <Select
+              <Select value={valorSelect}
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
-                onChange={(e) => setCant3(e.value)}
+                onChange={(e) => {
+                  setCant3(e.value), setValorSelect();
+                }}
               />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select options={select} onChange={(e) => setEje6(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {
+              setEje6(e.value), setValorSelect();
+            }} />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select options={select} onChange={(e) => setEje7(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {
+              setEje7(e.value), setValorSelect();
+            }} />
           </div>
           <div className="form-repeticiones">
-            <Select
+            <Select value={valorSelect}
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
-              onChange={(e) => setRepe3(e.value)}
+              onChange={(e) => {
+                setRepe3(e.value), setValorSelect();
+              }}
             />
           </div>
           <button onClick={() => eliminarFila4()} className="btn-eliminar">
@@ -283,27 +326,35 @@ export default function Form() {
           <div className="form-cantidad">
             <h1 className="text-serie">Series</h1>
             <div className="width-select">
-              <Select
+              <Select value={valorSelect}
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
-                onChange={(e) => setCant4(e.value)}
+                onChange={(e) => {
+                  setCant4(e.value), setValorSelect();
+                }}
               />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select options={select} onChange={(e) => setEje8(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {
+              setEje8(e.value), setValorSelect();
+            }} />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select options={select} onChange={(e) => setEje9(e.value)} />
+            <Select value={valorSelect} options={select} onChange={(e) => {
+              setEje9(e.value), setValorSelect();
+            }} />
           </div>
           <div className="form-repeticiones">
-            <Select
+            <Select value={valorSelect}
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
-              onChange={(e) => setRepe4(e.value)}
+              onChange={(e) => {
+                setRepe4(e.value), setValorSelect();
+              }}
             />
           </div>
           <button onClick={() => eliminarFila5()} className="btn-eliminar">

@@ -18,7 +18,7 @@ export const ejercicios = [
   {
     value: "Pecho",
     label: "Pecho",
-  } 
+  }
 ]
 
 export const Cantidad = [
