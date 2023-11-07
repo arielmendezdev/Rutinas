@@ -113,7 +113,7 @@
 .form-info {
     background-color: #79acaa;
     display: flex;
-    width: 40%;
+    width: 25%;
     margin: 10px auto;
     align-items: center;
 }
@@ -186,7 +186,7 @@
     filter: invert(1);
 }
 .width-select {
-    min-width: 80px;
+    width: 70px;
 }
 
 @media (max-width: 920px) {

@@ -12,7 +12,7 @@ export default function FormInfo() {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit} className="form-info form-control">
+    <form action="" onSubmit={handleSubmit} className="form-info form-control form-control-sm">
       <input
         type="text"
         value={nombre}

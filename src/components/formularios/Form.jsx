@@ -8,6 +8,7 @@ import {
   Brazos,
   Cantidad,
   Repeticiones,
+  Dias,
 } from "../../datos/datos";
 import Select from "react-select";
 import { contextoRutina } from "../../context/contextoRutina";
@@ -15,11 +16,23 @@ import eliminar from "../../assets/img/eliminar.png";
 
 export default function Form() {
   const {
-    agregarBrazos,
-    agregarPecho,
-    agregarEspalda,
-    agregarHombros,
-    agregarPiernas,
+    agregarLunes,
+    agregarMartes,
+    agregarMiercoles,
+    agregarJueves,
+    agregarViernes,
+    dia,
+    setDia,
+    eleccionMusculoLunes,
+    setEleccionMusculoLunes,
+    eleccionMusculoMartes,
+    setEleccionMusculoMartes,
+    eleccionMusculoMiercoles,
+    setEleccionMusculoMiercoles,
+    eleccionMusculoJueves,
+    setEleccionMusculoJueves,
+    eleccionMusculoViernes,
+    setEleccionMusculoViernes,
   } = useContext(contextoRutina);
 
   const [eje0, setEje0] = useState();
@@ -68,29 +81,22 @@ export default function Form() {
     repe4,
   };
 
-  const [valorSelect, setValorSelect] = useState(null)
-
   const hundleSubmit = (e) => {
     e.preventDefault();
-    setValorSelect(null)
-    setCant0();
-    setRepe0();
-    setEje0();
-    setEje1();
-    if (seleccion == "Brazos") {
-      agregarBrazos(info);
+    if (dia == "Lunes") {
+      agregarLunes(info);
     }
-    if (seleccion == "Pecho") {
-      agregarPecho(info);
+    if (dia == "Martes") {
+      agregarMartes(info);
     }
-    if (seleccion == "Espalda") {
-      agregarEspalda(info);
+    if (dia == "Miercoles") {
+      agregarMiercoles(info);
     }
-    if (seleccion == "Hombros") {
-      agregarHombros(info);
+    if (dia == "Jueves") {
+      agregarJueves(info);
     }
-    if (seleccion == "Piernas") {
-      agregarPiernas(info);
+    if (dia == "Viernes") {
+      agregarViernes(info);
     }
   };
 
@@ -125,81 +131,137 @@ export default function Form() {
     setEje9();
   };
 
+  const [selectMusculo, setSelectMusculo] = useState([]);
 
-  const [select, setSelect] = useState([]);
-
-  const [ejercicioEnPantalla, setEjercicioEnPantalla] = useState('')
-
-  const hundleChange = () => {
-    setEjercicioEnPantalla(seleccion)
-    
-    if (seleccion === "Espalda") {
-      setSelect(Espalda);
+  const hundleChange = (e) => {
+    if (e === "Espalda") {
+      setSelectMusculo(Espalda);
     }
-    if (seleccion == "Pecho") {
-
-      setSelect(Pecho);
+    if (e == "Pecho") {
+      setSelectMusculo(Pecho);
     }
-    if (seleccion == "Hombros") {
-      setSelect(Hombros);
+    if (e == "Hombros") {
+      setSelectMusculo(Hombros);
     }
-    if (seleccion == "Piernas") {
-      setSelect(Piernas);
+    if (e == "Piernas") {
+      setSelectMusculo(Piernas);
     }
-    if (seleccion == "Brazos") {
-      setSelect(Brazos);
+    if (e == "Brazos") {
+      setSelectMusculo(Brazos);
     }
   };
 
-  const [seleccion, setSeleccion] = useState();
+  const hundleEleccionMusculo = () => {
+    if (dia === "Lunes") {
+      if (!eleccionMusculoLunes.includes(musculo)) {
+        setEleccionMusculoLunes([...eleccionMusculoLunes, musculo]);
+      }
+    }
+    if (dia === "Martes") {
+      if (!eleccionMusculoMartes.includes(musculo)) {
+        setEleccionMusculoMartes([...eleccionMusculoMartes, musculo]);
+      }
+    }
+    if (dia === "Miercoles") {
+      if (!eleccionMusculoMiercoles.includes(musculo)) {
+        setEleccionMusculoMiercoles([...eleccionMusculoMiercoles, musculo]);
+      }
+    }
+    if (dia === "Jueves") {
+      if (!eleccionMusculoJueves.includes(musculo)) {
+        setEleccionMusculoJueves([...eleccionMusculoJueves, musculo]);
+      }
+    }
+    if (dia === "Viernes") {
+      if (!eleccionMusculoViernes.includes(musculo)) {
+        setEleccionMusculoViernes([...eleccionMusculoViernes, musculo]);
+      }
+    }
+  };
+
+  const [musculo, setMusculo] = useState();
+
+  const [valorSelect, setValorSelect] = useState();
+
+  const cambioValorSelect = () => {
+    
+  }
+
+  const cambioDia = (e) => {
+    setDia(e.value);
+    
+  }
 
   return (
     <div className="form">
       <form
         action=""
-        className="form-control container-form"
+        className="form-control container-form form-control-sm"
         onSubmit={hundleSubmit}
       >
-        <h1 className="flex p-2 h-10 text-2xl text-red-600 font-bold w-100">{ejercicioEnPantalla}</h1>
-        <div className="flex gap-4 p-2 align-items-md-center">
-          <Select
-            options={ejercicios}
-            onChange={(e) => setSeleccion(e.value)}
-          />
-          <button className="btn btn-sm btn-dark" onClick={hundleChange}>
-            Cambiar
+        <div className="flex justify-center gap-4 w-100 align-items-center">
+          <div>
+            <label htmlFor="">Dia</label>
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              className="w-32"
+              options={Dias}
+              onChange={(e) => cambioDia(e)}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Musculo</label>
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              className="w-32"
+              options={ejercicios}
+              onChange={(e) => {
+                setMusculo(e.value), hundleChange(e.value);
+              }}
+            />
+          </div>
+          <button onClick={hundleEleccionMusculo} className="w-28 hover:font-bold hover:text-slate-800 hover:cursor-pointer">
+            Cargar Musculo
           </button>
         </div>
         <div className="filas-form">
           <div className="form-cantidad">
-            <h1 className="text-serie">Series</h1>
             <div className="width-select">
               <Select
-                value={valorSelect}
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
-                onChange={(e) => {setCant0(e.value), setValorSelect()}}
-              />
+                onChange={(e) => setCant0(e.value)}
+                />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {setEje0(e.value), setValorSelect()}} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje0(e.value);
+              }}
+            />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {
-              setEje1(e.value), setValorSelect();
-            }} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje1(e.value);
+              }}
+            />
           </div>
           <div className="form-repeticiones">
-            <Select value={valorSelect}
+            <Select
               className="form-repeticiones"
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
               onChange={(e) => {
-                setRepe0(e.value), setValorSelect();
+                setRepe0(e.value);
               }}
             />
           </div>
@@ -209,34 +271,43 @@ export default function Form() {
         </div>
         <div className="filas-form">
           <div className="form-cantidad">
-            <h1 className="text-serie">Series</h1>
             <div className="width-select">
-              <Select value={valorSelect}
+              <Select
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
-                onChange={(e) => {setCant1(e.value), setValorSelect()}}
+                onChange={(e) => {
+                  setCant1(e.value);
+                }}
               />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {
-              setEje2(e.value), setValorSelect();
-            }} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje2(e.value);
+              }}
+            />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {
-              setEje3(e.value), setValorSelect();
-            }} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje3(e.value);
+              }}
+            />
           </div>
           <div className="form-repeticiones">
-            <Select value={valorSelect}
+            <Select
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
               onChange={(e) => {
-                setRepe1(e.value), setValorSelect();
+                setRepe1(e.value);
               }}
             />
           </div>
@@ -246,36 +317,43 @@ export default function Form() {
         </div>
         <div className="filas-form">
           <div className="form-cantidad">
-            <h1 className="text-serie">Series</h1>
             <div className="width-select">
-              <Select value={valorSelect}
+              <Select
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
                 onChange={(e) => {
-                  setCant2(e.value), setValorSelect();
+                  setCant2(e.value);
                 }}
               />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {
-              setEje4(e.value), setValorSelect();
-            }} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje4(e.value);
+              }}
+            />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {
-              setEje5(e.value), setValorSelect();
-            }} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje5(e.value);
+              }}
+            />
           </div>
           <div className="form-repeticiones">
-            <Select value={valorSelect}
+            <Select
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
               onChange={(e) => {
-                setRepe2(e.value), setValorSelect();
+                setRepe2(e.value);
               }}
             />
           </div>
@@ -285,36 +363,43 @@ export default function Form() {
         </div>
         <div className="filas-form">
           <div className="form-cantidad">
-            <h1 className="text-serie">Series</h1>
             <div className="width-select">
-              <Select value={valorSelect}
+              <Select
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
                 onChange={(e) => {
-                  setCant3(e.value), setValorSelect();
+                  setCant3(e.value);
                 }}
               />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {
-              setEje6(e.value), setValorSelect();
-            }} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje6(e.value);
+              }}
+            />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {
-              setEje7(e.value), setValorSelect();
-            }} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje7(e.value);
+              }}
+            />
           </div>
           <div className="form-repeticiones">
-            <Select value={valorSelect}
+            <Select
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
               onChange={(e) => {
-                setRepe3(e.value), setValorSelect();
+                setRepe3(e.value);
               }}
             />
           </div>
@@ -324,36 +409,43 @@ export default function Form() {
         </div>
         <div className="filas-form">
           <div className="form-cantidad">
-            <h1 className="text-serie">Series</h1>
             <div className="width-select">
-              <Select value={valorSelect}
+              <Select
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
                 onChange={(e) => {
-                  setCant4(e.value), setValorSelect();
+                  setCant4(e.value);
                 }}
               />
             </div>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {
-              setEje8(e.value), setValorSelect();
-            }} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje8(e.value);
+              }}
+            />
           </div>
           <div className="flex align-items-center">
             <h1>X</h1>
           </div>
           <div className="form-ejercicios">
-            <Select value={valorSelect} options={select} onChange={(e) => {
-              setEje9(e.value), setValorSelect();
-            }} />
+            <Select
+              defaultValue={{ label: "", value: "" }}
+              options={selectMusculo}
+              onChange={(e) => {
+                setEje9(e.value);
+              }}
+            />
           </div>
           <div className="form-repeticiones">
-            <Select value={valorSelect}
+            <Select
               defaultValue={{ label: "", value: "" }}
               options={Repeticiones}
               onChange={(e) => {
-                setRepe4(e.value), setValorSelect();
+                setRepe4(e.value);
               }}
             />
           </div>

@@ -1,3 +1,26 @@
+export const Dias = [
+  {
+    label: "Lunes",
+    value: "Lunes",
+  },
+  {
+    label: "Martes",
+    value: "Martes",
+  },
+  {
+    label: "Miercoles",
+    value: "Miercoles",
+  },
+  {
+    label: "Jueves",
+    value: "Jueves",
+  },
+  {
+    value: "Viernes",
+    label: "Viernes",
+  }
+]
+
 export const ejercicios = [
   {
     label: "Brazos",

@@ -1,27 +1,39 @@
-import ColumnasHombros from "../components/subcomps/ColumnaHombros";
-import ColumnasBrazos from "../components/subcomps/ColumnaBrazos";
-import ColumnasPiernas from "../components/subcomps/ColumnaPiernas";
-import ColumnaEspalda from "../components/subcomps/ColumnaEspalda";
-import ColumnaPecho from "../components/subcomps/ColumnaPecho";
 import ColumnaInfo from "../components/subcomps/ColumnaInfo";
+import Columnas from "./subcomps/Columnas";
+import { useContext } from "react";
+import { contextoRutina } from "../context/contextoRutina";
 
 export default function ContenidoPDF() {
+  
+  const {
+    infoLunes,
+    infoMartes,
+    infoMiercoles,
+    infoJueves,
+    infoViernes,
+    eleccionMusculoLunes,
+    eleccionMusculoMartes,
+    eleccionMusculoMiercoles,
+    eleccionMusculoJueves,
+    eleccionMusculoViernes,
+  } = useContext(contextoRutina);
+
   return (
     <div className="rutina-general">
       <div className="filas">
         <ColumnaInfo />
         <div className="espacio-eliminar"></div>
-        <ColumnaPecho dia="Miercoles" ejercicio="Pecho" />
+        <Columnas dia="Miercoles" info={infoMiercoles} eleccionMusculo={eleccionMusculoMiercoles}/>
       </div>
       <div className="filas">
-        <ColumnaEspalda dia="Lunes" ejercicio="Espalda" />
+        <Columnas dia="Lunes" info={infoLunes} eleccionMusculo={eleccionMusculoLunes}/>
         <div className="espacio-eliminar"></div>
-        <ColumnasHombros dia="Jueves" ejercicio="Hombros" />
+        <Columnas dia="Jueves" info={infoJueves} eleccionMusculo={eleccionMusculoJueves}/>
       </div>
       <div className="filas">
-        <ColumnasPiernas dia="Martes" ejercicio="piernas" />
+        <Columnas dia="Martes" info={infoMartes} eleccionMusculo={eleccionMusculoMartes}/>
         <div className="espacio-eliminar"></div>
-        <ColumnasBrazos dia="Viernes" ejercicio="brazos" />
+        <Columnas dia="Viernes" info={infoViernes} eleccionMusculo={eleccionMusculoViernes}/>
       </div>
     </div>
   );

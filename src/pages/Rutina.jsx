@@ -7,15 +7,9 @@ export default function Rutina() {
 
   return (
     <div className="">
-
       <FormInfo />
       <div className="caja-formularios">
         <Form />
-        {/* <FormPecho />
-        <FormEspalda />
-        <FormHombros />
-        <FormPiernas />
-        <FormBrazos /> */}
       </div>
       <div className="">
         <PdfGenerator />
