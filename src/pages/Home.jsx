@@ -2,9 +2,10 @@ export default function Home({data}) {
   
   return (
     <div>
-      <h1>Google Sheets Data</h1>
+      <h1 className='text-6xl font-serif flex justify-center h-96 align-items-center'>Bienvenidos</h1>
+      {/* <h1>Google Sheets Data</h1> */}
       <div className="flex justify-center w-75 gap-10 mx-auto mt-5">
-        <div>
+        {/* <div>
           <h1>Asistencias</h1>
           {data.map((row, index) =>
             row[2] === "Asistiré" ? (
@@ -34,7 +35,7 @@ export default function Home({data}) {
               </div>
             ) : null
           )}
-        </div>
+        </div> */}
 
         {/* ESTO VA SI SE UTILIZA EL SHEETS.BEST */}
         {/* <div>

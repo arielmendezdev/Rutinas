@@ -52,9 +52,9 @@ export default function App() {
   return (
     
     <StateContextRutina>
-    {/* <div className={`inicio ${inicio ? "" : "inicio-out"}`}>
+    <div className={`inicio ${inicio ? "" : "inicio-out"}`}>
       <img src={img} alt="" className="img-presentacion" />
-    </div> */}
+    </div>
       <BrowserRouter>
         <Navbar />
         <Routes>

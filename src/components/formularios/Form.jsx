@@ -34,7 +34,7 @@ export default function Form() {
     eleccionMusculoViernes,
     setEleccionMusculoViernes,
   } = useContext(contextoRutina);
-
+  
   const [eje0, setEje0] = useState();
   const [eje1, setEje1] = useState();
   const [eje2, setEje2] = useState();
@@ -45,7 +45,7 @@ export default function Form() {
   const [eje7, setEje7] = useState();
   const [eje8, setEje8] = useState();
   const [eje9, setEje9] = useState();
-
+  
   const [cant0, setCant0] = useState();
   const [cant1, setCant1] = useState();
   const [cant2, setCant2] = useState();
@@ -57,6 +57,9 @@ export default function Form() {
   const [repe2, setRepe2] = useState();
   const [repe3, setRepe3] = useState();
   const [repe4, setRepe4] = useState();
+  
+  const [musculo, setMusculo] = useState();
+  const [key, setKey] = useState(0)
 
   const info = {
     eje0,
@@ -83,6 +86,7 @@ export default function Form() {
 
   const hundleSubmit = (e) => {
     e.preventDefault();
+    setKey((prevKey) => prevKey + 1);
     if (dia == "Lunes") {
       agregarLunes(info);
     }
@@ -151,7 +155,8 @@ export default function Form() {
     }
   };
 
-  const hundleEleccionMusculo = () => {
+  const hundleEleccionMusculo = (e) => {
+    e.preventDefault();
     if (dia === "Lunes") {
       if (!eleccionMusculoLunes.includes(musculo)) {
         setEleccionMusculoLunes([...eleccionMusculoLunes, musculo]);
@@ -178,22 +183,9 @@ export default function Form() {
       }
     }
   };
-
-  const [musculo, setMusculo] = useState();
-
-  const [valorSelect, setValorSelect] = useState();
-
-  const cambioValorSelect = () => {
-    
-  }
-
-  const cambioDia = (e) => {
-    setDia(e.value);
-    
-  }
-
+  
   return (
-    <div className="form">
+    <div className="form" key={key}>
       <form
         action=""
         className="form-control container-form form-control-sm"
@@ -206,7 +198,7 @@ export default function Form() {
               defaultValue={{ label: "", value: "" }}
               className="w-32"
               options={Dias}
-              onChange={(e) => cambioDia(e)}
+              onChange={(e) => setDia(e.value)}
             />
           </div>
           <div>
@@ -220,7 +212,10 @@ export default function Form() {
               }}
             />
           </div>
-          <button onClick={hundleEleccionMusculo} className="w-28 hover:font-bold hover:text-slate-800 hover:cursor-pointer">
+          <button
+            onClick={hundleEleccionMusculo}
+            className="w-28 hover:font-bold hover:text-slate-800 hover:cursor-pointer"
+          >
             Cargar Musculo
           </button>
         </div>
@@ -231,7 +226,7 @@ export default function Form() {
                 defaultValue={{ label: "", value: "" }}
                 options={Cantidad}
                 onChange={(e) => setCant0(e.value)}
-                />
+              />
             </div>
           </div>
           <div className="form-ejercicios">
