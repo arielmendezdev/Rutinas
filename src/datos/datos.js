@@ -18,8 +18,8 @@ export const Dias = [
   {
     value: "Viernes",
     label: "Viernes",
-  }
-]
+  },
+];
 
 export const ejercicios = [
   {
@@ -41,8 +41,8 @@ export const ejercicios = [
   {
     value: "Pecho",
     label: "Pecho",
-  }
-]
+  },
+];
 
 export const Cantidad = [
   {
@@ -119,52 +119,21 @@ export const Repeticiones = [
 ];
 
 export const Pecho = [
-  { label: "Pullover", value: "Pullover" },
+  { label: "Apertura b/ plano", value: "Apertura b/ plano" },
+  { label: "Apertura b/ inclinado", value: "Apertura b/ inclinado" },
+  { label: "Aperturas poleas", value: "Aperturas poleas" },
+  { label: "Aperturas c/ rotacion", value: "Aperturas c/ rotacion" },
+  { label: "Flexiones", value: "Flexiones" },
   { label: "Fondo", value: "Fondo" },
-  {
-    label: "Pres plano/barra",
-    value: "Pres plano/barra",
-  },
-  {
-    label: "Pres inclinado/barra",
-    value: "Pres inclinado/barra",
-  },
-  {
-    label: "Pres declinado/barra",
-    value: "Pres declinado/barra",
-  },
-  {
-    label: "Pres plano/manc",
-    value: "Pres plano/manc",
-  },
-  {
-    label: "Pres inclinado/manc",
-    value: "Pres inclinado/manc",
-  },
-  {
-    label: "Pres declinado/manc",
-    value: "Pres declinado/manc",
-  },
-  {
-    label: "Pres plano/rotac",
-    value: "Pres plano/rotac",
-  },
-  {
-    label: "Aperturas/manc",
-    value: "Aperturas/manc",
-  },
-  {
-    label: "Aperturas/poleas",
-    value: "Aperturas/poleas",
-  },
-  {
-    label: "Tirones al frente",
-    value: "Tirones al frente",
-  },
-  {
-    label: "Flexiones",
-    value: "Flexiones",
-  },
+  { label: "Pres plano/barra", value: "Pres plano/barra" },
+  { label: "Pres inclinado/barra", value: "Pres inclinado/barra" },
+  { label: "Pres declinado/barra", value: "Pres declinado/barra" },
+  { label: "Pres plano/manc", value: "Pres plano/manc" },
+  { label: "Pres inclinado/manc", value: "Pres inclinado/manc" },
+  { label: "Pres declinado/manc", value: "Pres declinado/manc" },
+  { label: "Pres plano/rotac", value: "Pres plano/rotac" },
+  { label: "Pullover", value: "Pullover" },
+  { label: "Tirones al frente", value: "Tirones al frente" },
 ];
 
 export const Espalda = [
@@ -189,10 +158,6 @@ export const Espalda = [
   {
     label: "Serrucho",
     value: "Serrucho",
-  },
-  {
-    label: "Tirones tras nuca",
-    value: "Tirones tras nuca",
   },
   {
     label: "Polea al pecho abierto",
@@ -245,6 +210,10 @@ export const Hombros = [
     value: "Pres/maquina",
   },
   {
+    label: "Pres/Arnold",
+    value: "Pres/Arnold",
+  },
+  {
     label: "Remo al menton",
     value: "Remo al menton",
   },
@@ -267,7 +236,7 @@ export const Hombros = [
 ];
 
 export const Brazos = [
-  { label: "B. inclinado", value: "B. inclinado" },
+  { label: "B. Banco inclinado", value: "B. Banco inclinado" },
   { label: "B. 21/barra", value: "B. 21/barra" },
   {
     label: "B. 21/polea",
@@ -294,6 +263,10 @@ export const Brazos = [
     value: "B. Curl/Barra parado",
   },
   {
+    label: "B. Concentrado a rodilla",
+    value: "B. Concentrado a rodilla",
+  },
+  {
     label: "T. Pres Francés/barra",
     value: "T. Pres Francés/barra",
   },
@@ -302,28 +275,28 @@ export const Brazos = [
     value: "T. Polea tras nuca",
   },
   {
-    label: "T. Polea/soga",
-    value: "T. Polea/soga",
-  },
-  {
     label: "T. Tras nuca/manc",
     value: "T. Tras nuca/manc",
+  },
+  {
+    label: "T. Polea c/ soga",
+    value: "T. Polea c/ soga",
   },
   {
     label: "T. Invertidos en polea",
     value: "T. Invertidos en polea",
   },
   {
-    label: "T. Un brazo/polea",
-    value: "T. Un brazo/polea",
+    label: "T. Un brazo c/ polea",
+    value: "T. Un brazo c/ polea",
   },
   {
     label: "T. Patada de burro",
     value: "T. Patada de burro",
   },
   {
-    label: "T. Polea/barra",
-    value: "T. Polea/barra",
+    label: "T. Polea c/ barra",
+    value: "T. Polea c/ barra",
   },
   {
     label: "T. Fuerza de brazos",
@@ -338,44 +311,15 @@ export const Brazos = [
 export const Piernas = [
   { label: "Prensa", value: "Prensa" },
   { label: "Hack", value: "Hack" },
-  {
-    label: "Sentadilla",
-    value: "Sentadilla",
-  },
-  {
-    label: "Estocadas",
-    value: "Estocadas",
-  },
-  {
-    label: "Peso muerto",
-    value: "Peso muerto",
-  },
-  {
-    label: "Gemelos",
-    value: "Gemelos",
-  },
-  {
-    label: "Camilla",
-    value: "Camilla",
-  },
-  {
-    label: "Sillon",
-    value: "Sillon",
-  },
-  {
-    label: "Femorales",
-    value: "Femorales",
-  },
-  {
-    label: "Puente glúteos",
-    value: "Puente glúteos",
-  },
-  {
-    label: "Peso muerto 1 pierna",
-    value: "Peso muerto 1 pierna",
-  },
-  {
-    label: "Subida de cajon",
-    value: "Subida de cajon",
-  },
+  { label: "Sentadilla", value: "Sentadilla" },
+  { label: "Estocadas", value: "Estocadas" },
+  { label: "Peso muerto", value: "Peso muerto" },
+  { label: "Gemelos", value: "Gemelos" },
+  { label: "Camilla", value: "Camilla" },
+  { label: "Sillon", value: "Sillon" },
+  { label: "Femorales", value: "Femorales" },
+  { label: "Peso muerto 1 pierna", value: "Peso muerto 1 pierna" },
+  { label: "Subida de cajon", value: "Subida de cajon" },
+  { label: "Elevación de pelvis", value: "Elevación de pelvis" },
+  { label: "Tirones pierna polea", value: "Tirones pierna polea" },
 ];
