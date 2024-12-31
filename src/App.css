@@ -3,10 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     position: relative;
     min-height: 100vh;
-    padding-bottom: 8em;
+    padding-bottom: 9em;
 }
 
 .img-presentacion {
